@@ -1,6 +1,5 @@
 let page = document.getElementById("buttonDiv");
 let selectedClassName="current";
-const presetButtonColors = ["#3aa757", "#e8453c", "#f9bb2d", "#4688f1", "#ffffff"];
 
 function handleButtonClick(event){
     let current = event.target.parentElement.querySelector(
@@ -17,6 +16,10 @@ function handleButtonClick(event){
     let reset=event.target.dataset.color;
     event.target.classList.add(selectedClassName);
     chrome.storage.sync.set({ reset });
+
+    let text=event.target.dataset.textcolor;
+    event.target.classList.add(selectedClassName);
+    chrome.storage.sync.set({text});
 }
 
 function constructOptions(buttonColors){
