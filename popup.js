@@ -1,6 +1,15 @@
+import { HolidayAPI } from 'holidayapi';
+
+const key = '18d9efa4-f663-405f-b836-8fc6f905e46d';
+const holidayApi = new HolidayAPI({ key });
+
 let changeColor = document.getElementById("changeColor");
 let reset = document.getElementById("reset");
 var all = document.getElementById("changeTextColor");
+
+holidayApi.holidays({ country: 'US', year: 2021 })
+  .then((holidays) => { console.log(holidays); })
+  .catch((err) => { console.error(err); });
 
 chrome.storage.sync.get("color", ({ color }) => {
     changeColor.style.backgroundColor = color;
