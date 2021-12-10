@@ -50,31 +50,36 @@ changeColor.addEventListener("click", async () => {
 
 function setColor() {
   chrome.storage.sync.get(["color", "changeTextColor", "color2", "color3"], ({ color, changeTextColor, color2, color3}) => {
-    // document.body.style.backgroundColor = color;
-    // document.body.style.color = changeTextColor;
+    document.body.style.backgroundColor = color;
+    document.body.style.color = changeTextColor;
 
     all = document.body.getElementsByTagName('*');
     all2 = document.getElementsByClassName("L202Xe");
     all3 = document.body.childNodes;
 
-    // for (var i = 0, max=all.length; i<max; i++){
-    //   all[i].style.color = changeTextColor;
-    //   all[i].style.backgroundColor = color;
-    // }
-    // for (var i = 0, max=all2.length; i<max; i++){
-    //   all2[i].style.backgroundColor = color2;
-    // }
+    for (var i = 0, max=all.length; i<max; i++){
+      all[i].style.color = changeTextColor;
+      all[i].style.backgroundColor = color;
+    }
+
     for (let i = 0; i < document.body.childNodes.length; i++) {
       
       var grandchildren = all3[i];
       console.log(grandchildren)
+      grandchildren.style.backgroundColor = color3;
 
-      if (grandchildren.length > 1) {
-        for(let j=0; j<grandchildren.length; j++) {
-          grandchildren[j].style.backgroundColor=color3;
-          console.log(grandchildren[j]);
-        }
-      } 
+      // if (grandchildren.length > 1) {
+      //   for(let j=0; j<grandchildren.length; j++) {
+      //     grandchildren[j].style.backgroundColor=color3;
+      //     console.log("grandchildren" + grandchildren[j]);
+      //     var ggchildren = grandchildren[j].childNodes;
+      //     ggchildren.style.backgroundColor=color3;
+      //     for(let k=0; k<ggchildren.length; k++){
+      //       ggchildren[k].style.backgroundColor=color3;
+      //       console.log(ggchildren[k]);
+      //     }
+      //   }
+      // } 
     }
   });
 }
