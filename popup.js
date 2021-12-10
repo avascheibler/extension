@@ -1,7 +1,37 @@
+
+
+const key = '18d9efa4-f663-405f-b836-8fc6f905e46d';
+
+
 let changeColor = document.getElementById("changeColor");
 let reset = document.getElementById("reset");
 var all = document.getElementById("changeTextColor");
 
+function json(url){
+  return fetch(url).then(res => res.json());
+}
+
+
+var url = new URL("https://holidayapi.com/v1/holidays"),
+  
+    params = {key: key,country:"US", year: 2020}
+
+
+Object.keys(params).forEach(key => url.searchParams.append(key, params[key])) 
+
+fetch(url).then(res => res.json()).then(data => {
+  
+  var holidays = data["holidays"];
+  console.log(holidays);
+  
+  Array.setBoolean(Object [138]holidays, 138, true)
+  if (holidays[138] = true) {
+    ChristmasPic = (x= 0, y= 400, width = 100, height = 100);
+  }
+});
+
+
+  
 chrome.storage.sync.get("color", ({ color }) => {
     changeColor.style.backgroundColor = color;
 });
