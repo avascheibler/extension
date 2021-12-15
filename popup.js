@@ -14,19 +14,36 @@ function json(url){
 
 var url = new URL("https://holidayapi.com/v1/holidays"),
   
-    params = {key: key,country:"US", year: 2020}
+    params = {key: key,country:"US", year: 2021, month: 12, day: 10}
 
 
-Object.keys(params).forEach(key => url.searchParams.append(key, params[key])) 
+Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
 
 fetch(url).then(res => res.json()).then(data => {
   
   var holidays = data["holidays"];
   console.log(holidays);
   
-  Array.setBoolean(Object [138]holidays, 138, true)
-  if (holidays[138] = true) {
-    ChristmasPic = (x= 0, y= 400, width = 100, height = 100);
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+
+today = yyyy + '-' + mm + '-' + dd;
+document.write(today);
+ 
+  // if () {
+  //   ChristmasPic = (x= 0, y= 400, width = 100, height = 100);
+  // }
+
+  // grab the date of today
+  // loop through holidays 
+  // if one of the holidays has today's date then print the holiday name
+  for (var w= 0, max=146; w<146; w++){
+    console.log(holidays[w].date);
+    if (today == [w].date){
+      console.log([w].name);
+    }
   }
 });
 
@@ -35,6 +52,8 @@ fetch(url).then(res => res.json()).then(data => {
 chrome.storage.sync.get("color", ({ color }) => {
     changeColor.style.backgroundColor = color;
 });
+
+
 
 reset.addEventListener("click", async() => {
 
